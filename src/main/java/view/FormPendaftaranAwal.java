@@ -7,7 +7,6 @@ package view;
 
 public class FormPendaftaranAwal extends javax.swing.JFrame {
 
-    private String total;
     public FormPendaftaranAwal() {
         initComponents();
     }
@@ -26,8 +25,6 @@ public double hitungTotal() {
         jLabel7 = new javax.swing.JLabel();
         btnproses = new javax.swing.JButton();
         btnreset = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtarea = new javax.swing.JTextArea();
         cmbKursus = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -63,7 +60,9 @@ public double hitungTotal() {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel7.setText(" Nama Kursus");
 
+        btnproses.setBackground(new java.awt.Color(0, 0, 204));
         btnproses.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnproses.setForeground(new java.awt.Color(255, 255, 255));
         btnproses.setText("Proses");
         btnproses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,17 +70,15 @@ public double hitungTotal() {
             }
         });
 
+        btnreset.setBackground(new java.awt.Color(255, 0, 0));
         btnreset.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnreset.setForeground(new java.awt.Color(255, 255, 255));
         btnreset.setText("Reset");
         btnreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnresetActionPerformed(evt);
             }
         });
-
-        txtarea.setColumns(20);
-        txtarea.setRows(5);
-        jScrollPane2.setViewportView(txtarea);
 
         cmbKursus.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         cmbKursus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Java", "Data Science", "UI/UX" }));
@@ -156,30 +153,31 @@ public double hitungTotal() {
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtKodeKursus, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel6))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addGap(173, 173, 173)
-                                            .addComponent(cmbKursus, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addGap(172, 172, 172)
-                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(cmbLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtBiaya, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel6))
+                                        .addGap(7, 7, 7))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(173, 173, 173)
+                                        .addComponent(cmbKursus, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addGap(172, 172, 172)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cmbLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtBiaya, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(192, 192, 192)
                         .addComponent(btnproses)
                         .addGap(108, 108, 108)
                         .addComponent(btnreset)))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,9 +207,7 @@ public double hitungTotal() {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnproses)
                     .addComponent(btnreset))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,9 +218,9 @@ public double hitungTotal() {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -233,23 +229,6 @@ public double hitungTotal() {
     private void txtBiayaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBiayaActionPerformed
                                         
     try {
-        String nama = txtKodeKursus.getText();
-        String biaya = txtBiaya.getText();
-        String jumlah = txtDiskon.getText();
-        String kursus = cmbKursus.getSelectedItem().toString();
-
-        double Total = hitungTotal();
-
-        txtarea.setText(
-            "HASIL PENDAFTARAN\n" +
-            "============================\n" +
-            "Nama Peserta : " + nama + "\n" +
-            "Biaya Kursus : " + biaya + "\n" +
-            "Jumlah       : " + jumlah + "\n" +
-            "Pilih Kursus : " + kursus + "\n" +
-            "Total Biaya  : " + total
-        );
-
     } catch (NumberFormatException e) {
         javax.swing.JOptionPane.showMessageDialog(
             this,
@@ -272,13 +251,12 @@ public double hitungTotal() {
                      + "============================\n"
                      + "Kode Kursus  : " + kodeKursus + "\n"
                      + "Nama Kursus  : " + namaKursus + "\n"
+                     + "Level: INTERMEDIATE\n"
                      + "Biaya Kursus : Rp " + biaya + "\n"
                      + "Diskon (%)   : " + diskon + "%\n"
-                     + "Potongan     : Rp " + nominalDiskon + "\n"
-                     + "============================\n"
-                     + "Total Biaya  : Rp " + totalBiaya;
+                     + "Biaya akhir  : Rp " + totalBiaya;
 
-        txtarea.setText(hasil);
+        javax.swing.JOptionPane.showMessageDialog(this, hasil, "Hasil Pendaftaran Kursus", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
     } catch (NumberFormatException e) {
         javax.swing.JOptionPane.showMessageDialog(
@@ -294,7 +272,6 @@ public double hitungTotal() {
     txtBiaya.setText("");
     txtDiskon.setText("");
     cmbKursus.setSelectedIndex(0);
-    txtarea.setText("");
     txtKodeKursus.requestFocus();
     }//GEN-LAST:event_btnresetActionPerformed
 
@@ -355,11 +332,9 @@ public double hitungTotal() {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField txtBiaya;
     private javax.swing.JTextField txtDiskon;
     private javax.swing.JTextField txtKodeKursus;
-    private javax.swing.JTextArea txtarea;
     // End of variables declaration//GEN-END:variables
 
     private int hitungtotal() {
