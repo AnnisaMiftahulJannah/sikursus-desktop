@@ -1,11 +1,16 @@
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\app\DemoInheritance.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\app\DemoKursus.java
+D:\sikursus-desktop-master\sikursus-desktop\src\main\java\app\DemoPolymorphism.java
+D:\sikursus-desktop-master\sikursus-desktop\src\main\java\app\UjiPraktikum7.java
+D:\sikursus-desktop-master\sikursus-desktop\src\main\java\app\UjiValidasi.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\id\ac\uinbukitinggi\sikursus\desktop\Main.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\latihan\LatihanBiayaKursus.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\latihan\LatihanBidangDatar.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\latihan\LatihanTerarah.java
+D:\sikursus-desktop-master\sikursus-desktop\src\main\java\model\Admin.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\model\Instruktur.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\model\Kursus.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\model\Orang.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\model\Peserta.java
 D:\sikursus-desktop-master\sikursus-desktop\src\main\java\view\FormPendaftaranAwal.java
+D:\sikursus-desktop-master\sikursus-desktop\src\main\java\view\FormPendaftaranKursus.java
