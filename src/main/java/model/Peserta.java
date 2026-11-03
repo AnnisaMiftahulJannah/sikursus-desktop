@@ -21,13 +21,18 @@ public class Peserta extends Orang {
     // CONSTRUCTOR 2: Untuk Form GUI & Simpan Database (Mendukung Kode Baru)
     // =========================================================================
     public Peserta(String nim, String nama, String jenisKelamin, String prodi, String noHp, String email) {
-        // Karena di GUI (Langkah 8) ID di-generate otomatis oleh MySQL (Auto Increment), 
+        // Karena di GUI ID di-generate otomatis oleh MySQL (Auto Increment), 
         // kita kirim ID default 0 ke kelas Orang.
         super(0, nama, noHp); 
         setNim(nim);
         setProdi(prodi);
         this.jenisKelamin = jenisKelamin;
         this.email = email;
+    }
+
+    // Constructor Kosong (Diperbaiki agar tidak error/UnsupportedOperationException)[cite: 41]
+    public Peserta() {
+        super(0, "", "");
     }
 
     // =========================================================================

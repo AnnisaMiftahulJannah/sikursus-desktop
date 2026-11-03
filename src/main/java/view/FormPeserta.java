@@ -281,7 +281,7 @@ private void btnSimpanActionPerformed() {
     String noHp = txtNoHp.getText().trim();
     String email = txtEmail.getText().trim();
     String jk = getJenisKelamin();
-    // 1. Validasi Input Dasar
+    
     if (nim.isEmpty() || nama.isEmpty() || prodi.isEmpty() || jk.isEmpty()) {
     JOptionPane.showMessageDialog(this, "NIM, nama, jenis kelamin, dan prodi wajib diisi.", "Validasi", JOptionPane.WARNING_MESSAGE);
     return;
@@ -290,13 +290,13 @@ private void btnSimpanActionPerformed() {
     JOptionPane.showMessageDialog(this, "Silakan pilih kursus terlebih dahulu.", "Validasi Kursus", JOptionPane.WARNING_MESSAGE);
     return;
     }
-    // 2. Bungkus ke Objek Model & Proses Database XAMPP
+   
     Peserta peserta = new Peserta(nim, nama, jk, prodi, noHp, email);
     PesertaDAO dao = new PesertaDAO();
     try {
     boolean berhasilSimpan = dao.insert(peserta);
     if (berhasilSimpan) {
-    // 3. Jika Database Sukses, Cetak Ringkasan ke JTextArea
+    
     String kursusPilihan = cmbKursus.getSelectedItem().toString();
     String jkLengkap = jk.equals("L") ? "Laki-Laki" : "Perempuan";
     StringBuilder sb = new StringBuilder();
@@ -317,7 +317,7 @@ private void btnSimpanActionPerformed() {
     }
     sb.append("==============================================\n");
     txtRingkasan.setText(sb.toString());
-    // Dialog Sukses
+ 
     JOptionPane.showMessageDialog(this, "Data peserta berhasil disimpan.", "Sukses", JOptionPane.INFORMATION_MESSAGE);
     } else {
     JOptionPane.showMessageDialog(this, "Data tidak tersimpan.", "Informasi", JOptionPane.WARNING_MESSAGE);
