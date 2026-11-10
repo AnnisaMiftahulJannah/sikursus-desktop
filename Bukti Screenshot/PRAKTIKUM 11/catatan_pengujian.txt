@@ -1,0 +1,32 @@
+==================================================
+CATATAN PENGUJIAN APLIKASI SIKURSUS DESKTOP
+==================================================
+
+1. PENGUJIAN MODUL LOGIN (01_login.png)
+   - Deskripsi: Menguji form autentikasi pengguna berdasarkan peran (Admin / Operator).
+   - Hasil Pengujian: Berhasil. Sistem dapat mendeteksi kredensial akun di database dan mengarahkan pengguna ke halaman Dashboard sesuai dengan hak akses (Role) masing-masing.
+
+2. PENGUJIAN DASHBOARD ADMIN (02_dashboard_admin.png)
+   - Deskripsi: Menguji tampilan dashboard utama ketika masuk menggunakan akun dengan hak akses ADMIN.
+   - Hasil Pengujian: Berhasil. Seluruh menu navigasi (Master, Transaksi, Laporan, Keluar) aktif secara penuh, dan informasi sesi login (User & Role) tampil dengan benar.
+
+3. PENGUJIAN DASHBOARD OPERATOR (03_dashboard_operator.png)
+   - Deskripsi: Menguji hak akses menu pada halaman dashboard ketika login menggunakan akun Operator.
+   - Hasil Pengujian: Berhasil. Menu Master tertentu dibatasi atau disesuaikan dengan role Operator sesuai aturan aplikasi.
+
+4. PENGUJIAN MASTER PESERTA (04_master_peserta.png)
+   - Deskripsi: Menguji form dan tabel pengelolaan data peserta kursus (CRUD: Tambah, Ubah, Hapus, Cari).
+   - Hasil Pengujian: Berhasil. Data peserta dapat disimpan ke database MySQL, ditampilkan pada JTable, serta divalidasi dengan baik.
+
+5. PENGUJIAN MASTER KURSUS, INSTRUKTUR & KELAS (05_master_kursus_instruktur_kelas.png)
+   - Deskripsi: Menguji modul data master pendukung operasional kursus.
+   - Hasil Pengujian: Berhasil. Relasi dan form input untuk data kursus, data instruktur, serta pengelolaan kelas berjalan lancar tanpa kendala.
+
+6. PENGUJIAN USERS TABLE / MANAJEMEN PENGGUNA (06_users_table.png)
+   - Deskripsi: Menguji tabel data pengguna sistem untuk keperluan administrasi aplikasi.
+   - Hasil Pengujian: Berhasil. Daftar akun pengguna beserta level hak aksesnya berhasil dimuat dan dikelola dari antarmuka aplikasi desktop.
+
+7. PENGUJIAN POPUP MENU DASHBOARD (07_popup_menu.png)
+   - Deskripsi: Menguji fitur klik kanan (JPopupMenu) pada area tengah halaman dashboard dengan menu "Refresh" dan "Tentang Aplikasi".
+   - Hasil Pengujian: Berhasil. Ketika area tengah dashboard diklik kanan, popup menu muncul dengan interaktif. Saat menu "Tentang Aplikasi" diklik, sistem sukses memunculkan dialog informasi berisikan teks: "SIKURSUS Desktop
+Project PBO - Program Studi Informatika".
