@@ -28,6 +28,7 @@ util\WindowManager$1.class
 view\FormPendaftaranKursus.class
 model\Kursus.class
 app\UjiValidasi$9.class
+report\ReportService.class
 view\PesertaFrame$1.class
 view\LoginFrame.class
 view\FormPendaftaranAwal$3.class

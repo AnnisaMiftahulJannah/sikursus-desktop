@@ -30,6 +30,7 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import model.Peserta;
 import dao.PesertaDAO;
+import report.ReportService;
 
 public class MasterPeserta extends JFrame {
 
@@ -495,7 +496,7 @@ public class MasterPeserta extends JFrame {
     }
 
     private void btnCetakSemuaActionPerformed() {
-        JOptionPane.showMessageDialog(this, "Fitur Cetak Laporan / JasperReports dijalankan.", "Cetak Laporan", JOptionPane.INFORMATION_MESSAGE);
+        ReportService.tampilkanLaporanPeserta();
     }
 
     private void tampilkanRingkasan(String nim, String nama, String jk, String prodi, String noHp, String email) {
