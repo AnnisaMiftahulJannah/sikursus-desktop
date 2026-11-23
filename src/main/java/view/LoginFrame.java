@@ -11,6 +11,10 @@ import util.UserSession;
 
 public class LoginFrame extends JFrame {
     private final UserDAO userDAO = new UserDAO();
+    
+    public static void main(String[] args) {
+    SwingUtilities.invokeLater(() -> new LoginFrame().setVisible(true));
+}
 
     private JTextField txtUsername;
     private JPasswordField pwdPassword;

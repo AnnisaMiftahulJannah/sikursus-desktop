@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.net.URL;
 import javax.swing.*;
 import model.User;
+import report.ReportService;
 import util.UserSession;
 import util.WindowManager;
 
@@ -27,6 +28,7 @@ public class DashboardFrame extends JFrame {
 
     private JMenuItem miLaporanPeserta;
     private JMenuItem miLaporanPendaftaran;
+    private JMenuItem miLaporanPembayaran;
 
     private JMenuItem miLogout;
     private JMenuItem miTutup;
@@ -88,8 +90,10 @@ public class DashboardFrame extends JFrame {
         menuLaporan.setForeground(Color.WHITE);
         miLaporanPeserta = new JMenuItem("Laporan Peserta");
         miLaporanPendaftaran = new JMenuItem("Laporan Pendaftaran");
+        miLaporanPembayaran = new JMenuItem("Laporan Pembayaran");
         menuLaporan.add(miLaporanPeserta);
         menuLaporan.add(miLaporanPendaftaran);
+        menuLaporan.add(miLaporanPembayaran);
         menuBar.add(menuLaporan);
 
         // Menu Keluar
@@ -196,13 +200,111 @@ public class DashboardFrame extends JFrame {
 
         miPendaftaran.addActionListener(e -> JOptionPane.showMessageDialog(this, "Modul Pendaftaran sedang dikembangkan pada tahap project berikutnya."));
         miPembayaran.addActionListener(e -> JOptionPane.showMessageDialog(this, "Modul Pembayaran sedang dikembangkan pada tahap project berikutnya."));
-        miLaporanPeserta.addActionListener(e -> JOptionPane.showMessageDialog(this, "Modul laporan diaktifkan pada Pertemuan 12 dengan Jaspersoft Studio."));
-        miLaporanPendaftaran.addActionListener(e -> JOptionPane.showMessageDialog(this, "Modul laporan diaktifkan pada Pertemuan 12 dengan Jaspersoft Studio."));
+        miLaporanPeserta.addActionListener(e -> ReportService.tampilkanLaporanPeserta());
+        miLaporanPendaftaran.addActionListener(e -> bukaLaporanPendaftaran());
+        miLaporanPembayaran.addActionListener(e -> bukaLaporanPembayaran());
 
         miLogout.addActionListener(this::miLogoutActionPerformed);
         miTutup.addActionListener(this::miTutupActionPerformed);
         miTentang.addActionListener(e -> JOptionPane.showMessageDialog(this, "SIKURSUS Desktop\nProject PBO Program Studi Informatika"));
         miRefresh.addActionListener(e -> JOptionPane.showMessageDialog(this, "Dashboard berhasil direfresh."));
+    }
+
+    private void bukaLaporanPendaftaran() {
+        String idStr = JOptionPane.showInputDialog(
+                this,
+                "Masukkan ID Pendaftaran (angka):",
+                "1"
+        );
+        if (idStr == null) {
+            return;
+        }
+
+        idStr = idStr.trim();
+        if (idStr.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "ID Pendaftaran wajib diisi berupa angka.",
+                    "Validasi ID",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        Integer idPendaftaran;
+        try {
+            idPendaftaran = Integer.valueOf(idStr);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "ID Pendaftaran harus berupa angka bulat (contoh: 1, 2, 3, 4).",
+                    "Format ID Salah",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        ReportService.cetakPendaftaran(idPendaftaran);
+    }
+
+    private void bukaLaporanPembayaran() {
+        String awalStr = JOptionPane.showInputDialog(
+                this,
+                "Masukkan Tanggal Awal (yyyy-MM-dd):",
+                "2026-11-01"
+        );
+        if (awalStr == null) {
+            return;
+        }
+
+        String akhirStr = JOptionPane.showInputDialog(
+                this,
+                "Masukkan Tanggal Akhir (yyyy-MM-dd):",
+                "2026-11-30"
+        );
+        if (akhirStr == null) {
+            return;
+        }
+
+        awalStr = awalStr.trim();
+        akhirStr = akhirStr.trim();
+
+        if (awalStr.isEmpty() || akhirStr.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Tanggal awal dan tanggal akhir wajib diisi (format yyyy-MM-dd).",
+                    "Validasi Tanggal",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        java.sql.Date tanggalAwal;
+        java.sql.Date tanggalAkhir;
+        try {
+            tanggalAwal = java.sql.Date.valueOf(awalStr);
+            tanggalAkhir = java.sql.Date.valueOf(akhirStr);
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Format tanggal harus yyyy-MM-dd (contoh: 2026-11-01).",
+                    "Format Tanggal Salah",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        if (tanggalAwal.after(tanggalAkhir)) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Tanggal awal tidak boleh setelah tanggal akhir.",
+                    "Validasi Rentang Tanggal",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        ReportService.cetakPembayaran(tanggalAwal, tanggalAkhir);
     }
 
     private ImageIcon loadIcon(String path) {
@@ -255,4 +357,4 @@ public class DashboardFrame extends JFrame {
     System.exit(0);
     }
     }
-    }
+}

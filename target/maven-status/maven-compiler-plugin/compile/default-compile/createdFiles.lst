@@ -2,6 +2,7 @@ app\UjiValidasi$5.class
 view\KursusFrame.class
 latihan\LatihanBiayaKursus.class
 dao\PesertaDAO.class
+view\PendaftaranFrame.class
 app\Main.class
 view\FormPendaftaranAwal$1.class
 view\DashboardFrame.class
@@ -44,6 +45,7 @@ view\InstrukturFrame.class
 view\PesertaFrame$2.class
 app\UjiValidasi$4.class
 latihan\LatihanBidangDatar.class
+view\PendaftaranFrame$1.class
 util\UserSession.class
 util\WindowManager.class
 view\MasterPeserta$1.class

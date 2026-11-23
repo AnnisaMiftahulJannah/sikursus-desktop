@@ -8,6 +8,9 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -31,8 +34,16 @@ import javax.swing.table.DefaultTableModel;
 import model.Peserta;
 import dao.PesertaDAO;
 import report.ReportService;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class MasterPeserta extends JFrame {
+
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/db_sikursus";
+    private static final String DB_USER = "root";
+    private static final String DB_PASS = "";
+    private static final String REPORT_PESERTA_PATH = "/report/laporan_peserta.jasper";
 
     // Kombinasi Warna Pastel Pink & Deep Purple
     private final Color warnaLatar = new Color(245, 238, 245);     // Soft Greyish Pink
@@ -496,7 +507,30 @@ public class MasterPeserta extends JFrame {
     }
 
     private void btnCetakSemuaActionPerformed() {
-        ReportService.tampilkanLaporanPeserta();
+        try {
+            ReportService.tampilkanLaporanPeserta();
+        } catch (Throwable serviceEx) {
+            try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+                 InputStream reportStream = getClass().getResourceAsStream(REPORT_PESERTA_PATH)) {
+
+                if (reportStream == null) {
+                    JOptionPane.showMessageDialog(this,
+                            "File " + REPORT_PESERTA_PATH + " tidak ditemukan di resources.",
+                            "Error Report",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                JasperPrint jasperPrint = JasperFillManager.fillReport(reportStream, null, conn);
+                JasperViewer.viewReport(jasperPrint, false);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Gagal mencetak laporan peserta: " + ex.getMessage(),
+                        "Error Cetak",
+                        JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+        }
     }
 
     private void tampilkanRingkasan(String nim, String nama, String jk, String prodi, String noHp, String email) {

@@ -13,25 +13,29 @@ public final class PasswordUtil {
     private static final int KEY_LENGTH = 256;
     private static final SecureRandom RANDOM = new SecureRandom();
 
+    static String hash(char[] password) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     private PasswordUtil() {}
 
-    public static String hash(char[] password) {
+    public static String hashPassword(char[] password) {
+    try {
         byte[] salt = new byte[16];
-        RANDOM.nextBytes(salt);
-        PBEKeySpec spec = new PBEKeySpec(password, salt, ITERATIONS, KEY_LENGTH);
-        try {
-            byte[] hash = SecretKeyFactory.getInstance(ALGORITHM)
-                    .generateSecret(spec)
-                    .getEncoded();
-            return ITERATIONS + ":"
-                    + Base64.getEncoder().encodeToString(salt) + ":"
-                    + Base64.getEncoder().encodeToString(hash);
-        } catch (GeneralSecurityException ex) {
-            throw new IllegalStateException("Gagal membuat password hash", ex);
-        } finally {
-            spec.clearPassword();
-        }
+        new java.security.SecureRandom().nextBytes(salt);
+
+        javax.crypto.spec.PBEKeySpec spec = new javax.crypto.spec.PBEKeySpec(
+                password, salt, ITERATIONS, KEY_LENGTH
+        );
+        javax.crypto.SecretKeyFactory skf = javax.crypto.SecretKeyFactory.getInstance(ALGORITHM);
+        byte[] hash = skf.generateSecret(spec).getEncoded();
+
+        java.util.Base64.Encoder enc = java.util.Base64.getEncoder();
+        return ITERATIONS + ":" + enc.encodeToString(salt) + ":" + enc.encodeToString(hash);
+    } catch (Exception e) {
+        throw new RuntimeException("Gagal membuat hash password", e);
     }
+}
 
     public static boolean verify(char[] password, String stored) {
         if (stored == null || stored.isBlank()) return false;
